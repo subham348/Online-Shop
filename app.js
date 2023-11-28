@@ -2,10 +2,26 @@ const path = require("path");
 
 const express = require("express");
 const bodyParser = require("body-parser");
+// const expressHbs = require("express-handlebars");
+
+// Using express-handlebars 7.1.2 instead of taught version 3.0.0
+const { engine } = require("express-handlebars");
 
 const app = express();
 
-app.set("view engine", "pug");
+// app.engine(
+//   "hbs",
+//   expressHbs({
+//     layoutsDir: "views/layouts/",
+//     defaultLayout: "main-layout",
+//     extname: "hbs",
+//   })
+// );
+
+// main.handlebars file is added in layout folder because of newer
+// version of express-handlebars
+app.engine("hbs", engine());
+app.set("view engine", "hbs");
 app.set("views", "views");
 
 const adminData = require("./routes/admin");
