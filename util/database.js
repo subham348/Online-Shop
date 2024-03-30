@@ -1,10 +1,9 @@
-const mysql = require("mysql2");
+const Sequelize = require("sequelize");
 
-const pool = mysql.createPool({
+// Change password to correct one
+const sequelize = new Sequelize("node-complete", "root", "Your_Password", {
+  dialect: "mysql",
   host: "localhost",
-  user: "root",
-  database: "node-complete",
-  password: "Your_Password", // Change password to correct one
 });
 
-module.exports = pool.promise();
+module.exports = sequelize;
